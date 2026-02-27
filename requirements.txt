@@ -1,3 +1,6 @@
 fastapi[standard]
 cairosvg
 drawsvg[all]
+
+atproto
+requests

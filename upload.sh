@@ -1,4 +1,3 @@
-#! /usr/bin/env sh
-
-python makepfp.py
-python uploadpfp.py
+cd /home/tok/apps/pfp
+.env/bin/python makepfp.py
+.env/bin/python uploadpfp.py

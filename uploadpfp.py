@@ -2,7 +2,7 @@ import atproto
 from atproto_client.models import blob_ref
 import requests
 import base64
-from tls_client import Session
+#from tls_client import Session
 import tomllib
 from atproto import Client, client_utils, models
 
@@ -53,8 +53,8 @@ def discord_upload()->requests.Response:
 # 
 def bsky_upload()->atproto.models.ComAtprotoRepoPutRecord.Response:
     pfp_collection:str="app.bsky.actor.profile"
-    client = Client()
     login:dict[str, str] = config["bsky"]
+    client = Client(base_url=login["baseurl"])
     _ = client.login(login["user"],login["pass"])
     with open(image_file, "rb") as f:
         blob: atproto.models.ComAtprotoRepoUploadBlob.Data = atproto.models.ComAtprotoRepoUploadBlob.Data(f.read())
@@ -73,6 +73,6 @@ def bsky_upload()->atproto.models.ComAtprotoRepoPutRecord.Response:
         return putresp
 
 if __name__ == '__main__':
-    r = discord_upload()
+    #r = discord_upload()
     r = bsky_upload()
 
